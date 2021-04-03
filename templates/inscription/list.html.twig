@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InscriptionController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.body {
+			width: 100%;
+			background: white;
+			height: 70vh;
+			display: flex;
+			justify-content: center;
+			background: #fff;
+		}
+		.title {
+			color: #388c37;
+		}
+	</style>
+
+	<div class="body">
+		<div>
+			<h1 class="title text-center">LISTE DES ETUDIANTS</h1>
+			<table class="table" style="background:#9dce9d;">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Prénom</th>
+						<th scope="col">Adresse</th>
+						<th scope="col">Telephone</th>
+						<th scope="col">Email</th>
+						<th scope="col">Filiere</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% if etudiants %}
+						{% for etudiant in etudiants %}
+							{% if etudiant.id %2 == 0 %}
+								<tr class="table-primary">
+									<th scope="row">{{ etudiant.id }}</th>
+									<td>{{ etudiant.firstname }}</td>
+									<td>{{ etudiant.lastname }}</td>
+									<td>{{ etudiant.address }}</td>
+									<td>{{ etudiant.phone }}</td>
+									<td>{{ etudiant.email }}</td>
+									<td>{{ etudiant.filiere }}</td>
+								</tr>
+							{% else %}
+								<tr>
+									<th scope="row">{{ etudiant.id }}</th>
+									<td>{{ etudiant.firstname }}</td>
+									<td>{{ etudiant.lastname }}</td>
+									<td>{{ etudiant.address }}</td>
+									<td>{{ etudiant.phone }}</td>
+									<td>{{ etudiant.email }}</td>
+									<td>{{ etudiant.filiere }}</td>
+								</tr>
+							{% endif %}
+						{% endfor %}
+					{% else %}
+						<tr>
+							<th>Pas de donnée disponnible</th>
+						</tr>
+					{% endif %}
+				</tbody>
+			</table>
+			<h1 class="title text-center">NOMBRES D'ETUDIANTS PAR FILIERE</h1>
+			<table class="table" style="background:#9dce9d;">
+				<thead>
+					<tr>
+						<th scope="col">Nom Filière</th>
+						<th scope="col">Nombres d'élèves</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for filiere in filieres %}
+						<tr>
+							<th scope="row">{{ filiere.name }}</th>
+							<td>{{ filiere.count }}</td>
+						</tr>
+					</tbody>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+{% endblock %}

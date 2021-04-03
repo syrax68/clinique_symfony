@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InscriptionController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.title {
+			color: #388c37;
+		}
+	</style>
+
+	<div class="d-content">
+		<div class="d-flex justify-content-center">
+			<div class="card" style="width: 60rem;">
+				<div class="card-body" style="padding: 30px">
+					<h3 class="card-title text-center title">Inscription Concours</h3>
+					<form action="" method="post">
+						<div class="row mt-5">
+							<div class="col-md-6">
+								<h5 class="text-center title">Information personnelle</h5>
+								<div class="form-group m-3">
+									<label>Nom</label>
+									<input type="text" name="firstname" class="form-control" placeholder="Nom" required>
+								</div>
+								<div class="form-group m-3">
+									<label>Prenom</label>
+									<input type="text" name="lastname" class="form-control" placeholder="Prenom" required>
+								</div>
+								<div class="form-group m-3">
+									<label>Date de Naissance</label>
+									<input type="text" name="datenaiss" class="form-control" placeholder="Date de Naissance" required>
+								</div>
+								<div class="form-group m-3">
+									<label>Adresse</label>
+									<input type="text" name="address" class="form-control" placeholder="Adresse" required>
+								</div>
+								<div class="form-group m-3">
+									<label>Telephone</label>
+									<input type="number" name="phone" class="form-control" placeholder="Telephone" required>
+								</div>
+								<div class="form-group m-3">
+									<label>Email</label>
+									<input type="email" name="email" class="form-control" placeholder="email@gmail.com" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div>
+									<h5 class="text-center title">Information sur votre parcours</h5>
+									<div class="form-group m-3">
+										<label>Serie</label>
+										<input type="text" name="serie" class="form-control" placeholder="Serie" required>
+									</div>
+									<div class="form-group m-3">
+										<label>Annee</label>
+										<input type="number" name="anneebac" class="form-control" placeholder="Annee" required>
+									</div>
+									<div class="form-group m-3">
+										<label>Ecole</label>
+										<input type="text" name="ecole" class="form-control" placeholder="Ecole" required>
+									</div>
+									<div class="form-group m-3">
+										<label>Votre dossier</label>
+										<div class="custom-file">
+											<input type="file" class="custom-file-input" name="fichier" id="inputGroupFile01">
+											<label class="custom-file-label" for="inputGroupFile01">Fichier</label>
+										</div>
+									</div>
+									<h5 class="text-center title">Choisissez votre filiere</h5>
+									<div class="form-group m-3">
+										<select name="filiere" class="form-select" aria-label="Default select example">
+											<option selected>Choisissez votre filiere</option>
+											{% for filiere_item in filieres %}
+												<option value={{ filiere_item.id }}>{{ filiere_item.nom }}</option>
+											{% endfor %}
+										</select>
+									</div>
+									<h5 class="text-center title">Choisissez votre mode de paiement</h5>
+									<div class="form-group m-3">
+										<select name="paiement" class="form-select" aria-label="Default select example">
+											<option selected>Choisissez votre mode de paiement</option>
+											{% for paiement_item in paiements %}
+												<option value={{ paiement_item.id }}>{{ paiement_item.modePaiement }}</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex justify-content-center">
+							<button type="submit" class="btn mt-3" style="width:100%;background-color: #388c37;border-color: #388c37;color:#fff">S'inscrire</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
